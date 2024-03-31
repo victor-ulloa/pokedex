@@ -11,14 +11,15 @@ final class SearchViewModel: ObservableObject {
     
     @Published var index: Int = 0
     @Published var pokemonListResponse : PokemonListResponse?
+    @Published var pokemonListItems: [PokemonListItem] = []
     
     private var cancellable: AnyCancellable?
     
     init() {
-        
-        cancellable = $index.sink { value in
-            NetworkManager.instance.getPokemonList(offset: 0, limit: 20) { response in
-                print(response)
+        cancellable = $index.sink { [weak self] value in
+            NetworkManager.instance.getPokemonList(offset: 0, limit: 20) { [weak self] response in
+                self?.pokemonListResponse = response
+                self?.pokemonListItems.append(contentsOf: response.results)
             }
         }
         
