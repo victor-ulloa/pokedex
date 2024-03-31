@@ -23,7 +23,7 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(searchResults, id: \.name) { item in
+                ForEach(searchResults) { item in
                     NavigationLink {
                         Text(item.name)
                     } label: {
@@ -31,7 +31,7 @@ struct SearchView: View {
                     }
                 }
             }
-            .navigationTitle("Pokemons")
+            .navigationTitle("Pokemon List")
         }
         .searchable(text: $searchText)
     }
