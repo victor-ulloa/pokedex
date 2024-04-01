@@ -21,19 +21,41 @@ struct SearchView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(searchResults) { item in
-                    NavigationLink {
-                        Text(item.name)
+        NavigationView {
+            
+            VStack {
+                HStack {
+                    TextField("Search", text: $searchText)
+                        .onReceive(searchText.publisher, perform: { text in
+                            print(text)
+                        })
+                        .textFieldStyle(.roundedBorder)
+                    
+                    Button {
+                        searchText = ""
                     } label: {
-                        Text(item.name)
+                        Text("Cancel")
                     }
                 }
+                .padding()
+                    
+
+                
+                List {
+                    ForEach(searchResults) { item in
+                        NavigationLink {
+                            Text(item.name.capitalized)
+                        } label: {
+                            Text(item.name.capitalized)
+                        }
+                    }
+                }
+                .listStyle(.plain)
+                
             }
             .navigationTitle("Pokemon List")
         }
-        .searchable(text: $searchText)
+        .navigationViewStyle(.stack)
     }
 }
 
