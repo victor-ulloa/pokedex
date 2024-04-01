@@ -80,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				57C17CFB2BB8AA7D00CD916D /* NetworkManager.swift */,
-				57C17D002BB8B38F00CD916D /* MainView.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -96,6 +95,7 @@
 		57C17D032BB8B44A00CD916D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				57C17D002BB8B38F00CD916D /* MainView.swift */,
 				57C17D042BB8B49500CD916D /* Search */,
 				57C17CEC2BB8A96900CD916D /* PokedexApp.swift */,
 			);

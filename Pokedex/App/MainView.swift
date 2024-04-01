@@ -12,7 +12,7 @@ struct MainView: View {
         TabView {
             SearchView()
                 .tabItem {
-                    Image(systemName: "square.grid.2x2")
+                    Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
         }
